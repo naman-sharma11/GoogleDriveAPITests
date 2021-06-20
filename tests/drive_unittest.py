@@ -1,5 +1,6 @@
 import os
-
+import sys
+sys.path.append("../")
 import unittest
 
 from scripts.drive_operation import GoogleApiTest
@@ -10,13 +11,13 @@ class DriveAPITest(unittest.TestCase):
         self.main_class = GoogleApiTest()
 
     def test_a_drive_not_empty(self):
-        result = self.main_class.list_files()
-        self.assertTrue(result)
+        status, result = self.main_class.list_files()
+        self.assertTrue(status)
 
     def test_b_upload_test_jpeg_file(self):
         filename, filepath, mimetype = 'EiffelTower_TestImage.jpg', 'EiffelTower_TestImage.jpg', 'image/jpeg'
-        aa = self.main_class.upload_file(filename, filepath, mimetype)
-        self.assertTrue(aa)
+        upload = self.main_class.upload_file(filename, filepath, mimetype)
+        self.assertTrue(upload)
 
     def test_c_file_exists_in_drive(self):
         result = self.main_class.search_file("name contains 'EiffelTower_TestImage.jpg'")
@@ -28,19 +29,19 @@ class DriveAPITest(unittest.TestCase):
         file_check = os.path.exists(destination_file_name)
         if file_check:
             os.remove(destination_file_name)
-            id = self.main_class.search_file('name contains "{}"'.format(source_file_name))
-            if id is not None:
-                result = self.main_class.download_files(id, destination_file_name)
+            file_id = self.main_class.search_file('name contains "{}"'.format(source_file_name))
+            if file_id is not None:
+                result = self.main_class.download_files(file_id, destination_file_name)
                 self.assertTrue(result)
             else:
-                self.assertIsNotNone(id)
+                self.assertIsNotNone(file_id)
         else:
-            id = self.main_class.search_file('name contains "{}"'.format(source_file_name))
-            if id is not None:
-                result = self.main_class.download_files(id, destination_file_name)
+            file_id = self.main_class.search_file('name contains "{}"'.format(source_file_name))
+            if file_id is not None:
+                result = self.main_class.download_files(file_id, destination_file_name)
                 self.assertTrue(result)
             else:
-                self.assertIsNotNone(id)
+                self.assertIsNotNone(file_id)
 
     def test_e_delete_file_from_drive(self):
         file_name = 'EiffelTower_TestImage.jpg'

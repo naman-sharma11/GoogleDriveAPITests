@@ -1,17 +1,16 @@
 # GoogleDriveAPITests
 ## Introduction
-This is a Google Drive API Test project written in Python. The script is capable to perform operations such as **List, Upload, Download and Delete Files** to/from the Google Drive. 
+This is a Google Drive API Test project written in Python. The script is capable of performing operations such as **List, Upload, Download and Delete Files** to/from the Google Drive. 
 
 ## Prerequisites
-To start with the scipt execution following prerequisites needs to be fulfilled.
+To start the script execution, following prerequisites needs to be fulfilled.
 - Download the script and place it in your local disk
 - Refer to [Google Drive Python Quickstart](https://developers.google.com/drive/api/v3/quickstart/python#prerequisites) to fulfill the prerequisites mentioned.
 - At the step of Creating Credentials, script is made for app type [Create Desktop application credentials](https://developers.google.com/workspace/guides/create-credentials#desktop)
-- Place the client secret json file in **files** directory of the project with name **client_secret.json**.
+- Place the client secret json file inside the **files** directory of the project and name it as **client_secret.json**.
 
 ## Script Overview
-Script comprises of 3 directories and 1 main file.
-Few details are-
+Script comprises of 3 directories and 1 main file, contents are as below-
 - Directory **files**- This directory contains the files needed for execution. client_secret.json is the credentials file and token.json will be generated at runtime when the script is triggered. It will ask for sign in to Google account and once Authorization Flow is completed, a token.json file will be generated.
 - Directory **scripts**- This directory contains the file drive_operation.py. This file is responsible to execute whole operations on Google Drive. It has few functions defined which are called and executed at some point of time.
 - Directory **tests**- This directory contains the file related to test cases. It has drive_unittest.py file which have the testcases defined in it. It has a suite file testing_suite.py which needs to be run whenever we needed to run our test cases. One dummy image file named **EiffelTower_TestImage.jpg** is also present which is used to perform operations on Google Drive.

@@ -1,5 +1,6 @@
 import unittest
-
+import sys
+sys.path.append("../")
 from tests.drive_unittest import DriveAPITest
 
 test_classes_to_run = [DriveAPITest]
